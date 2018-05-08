@@ -170,14 +170,14 @@
         // 获取选项卡操作对象
 
                 for (var i = 0; i < tab.length; i++) {
-                    pic = showPic[i].getElementsByTagName("li");
+                    pic = showPic[1].getElementsByTagName("li");
                     tab[i].onclick = function () {
                         for (var j = 0; j < showDiv.length; j++) {
                             var str = showDiv[j].className;
                             showDiv[j].className = str.replace(" on"," ");
                         }
-                        showDiv[i].className = showDiv[i].className.concat("on");
-                        showOrder[0].className = showOrder[0].className.concat("on");
+                        showDiv[1].className = showDiv[1].className.concat(" on");
+                        showOrder[1].className = showOrder[1].className.concat(" on");
                         pic[0].className = pic[0].className.concat("on");
                     }
                 }
