@@ -164,36 +164,52 @@
         showDiv = document.querySelectorAll(".show .tab_show"),
         showOrder = document.getElementsByClassName("orderN"),
         showPic = document.querySelectorAll(".tab_show .Pic"),
-        pic;
-    
+        choosePic = showOrder[0].getElementsByTagName("li"),
+        pic = showPic[0].getElementsByTagName("li");
+
+    // 点击获取图片；
+        function choPic() {
+            for (var i = 0; i < choosePic.length; i++) {
+                choosePic[i].index = i;
+                console.log(choosePic[i].index);
+                choosePic[i].onclick = function () {
+                    console.log(this.index);
+                    for (var j = 0; j < pic.length; j++) {
+                        pic[j].className = pic[j].className.replace("on", " ");
+                    }
+                    var str = pic[this.index].className.trim();
+                    pic[this.index].className = str.concat(" on");
+                }
+            }
+        }
+        choPic();
     // 切换选项卡
         // 获取选项卡操作对象
-
                 for (var i = 0; i < tab.length; i++) {
-                    pic = showPic[1].getElementsByTagName("li");
+                    tab[i].index = i;
+                    console.log(tab[i].index);
                     tab[i].onclick = function () {
                         for (var j = 0; j < showDiv.length; j++) {
                             var str = showDiv[j].className;
-                            showDiv[j].className = str.replace(" on"," ");
+                            showDiv[j].className = str.replace("on"," ");
                         }
-                        showDiv[1].className = showDiv[1].className.concat(" on");
-                        showOrder[1].className = showOrder[1].className.concat(" on");
-                        pic[0].className = pic[0].className.concat("on");
+                        for(var k=0;k<showPic.length;k++){
+                            for(var m=0;m<showPic[k].getElementsByTagName("li").length; m++){
+                                var str = showPic[k].getElementsByTagName("li")[m].className.trim();
+                                showPic[k].getElementsByTagName("li")[m].className = str.replace("on"," ");
+                            }
+
+                        }
+                        console.log(this.index);
+                             pic = showPic[this.index].getElementsByTagName("li");
+                             choosePic = showOrder[this.index].getElementsByTagName("li");
+                         var thNum = this.index;
+                        showDiv[thNum].className = showDiv[thNum].className.trim().concat(" on");
+                        showOrder[thNum].className = showOrder[thNum].className.trim().concat(" on");
+                        pic[0].className = pic[0].className.trim().concat(" on");
+                        choPic();
                     }
                 }
-
-       
-
-    // console.log(tab);
-    // console.log(showDiv);
-    // console.log(showOrder);
-    // console.log(showPic);
-    //
-    // console.log(pic);
-
-
-
-
 </script>
 </body>
 </html>
