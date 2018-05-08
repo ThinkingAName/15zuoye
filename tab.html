@@ -48,74 +48,80 @@
         .tab{
             float: left;
             width: 100px;
+            margin-right: 10px;
         }
         .tab li{
             height: 30px;
+            border: 1px solid #806d7c;
             text-align: center;
             font-size: 16px;
             line-height: 30px;
-            background-color: #ffa225;
+            background-color: rgba(254,162,80,0.5);
         }
         .show{
             float: left;
-            width: 350px;
         }
-        /*.show{*/
-            /*position: relative;*/
-            /**/
-
-        /*}*/
         .show div{
-            dispaly: none;
+            display: none;
         }
         .Pic li{
             display: none;
             width: 326px;
             height: 204px;
         }
-        .Pic li.on{
-            dispaly: black;
+        .show .on{
+            display: block;
+        }
+        .orderN{
+            position: relative;
+            top:-30px;
+            right: 0;
         }
         .orderN li{
-            float: right;
+            float: left;
             width: 25px;
             height: 25px;
             margin-left: 5px;
             font-size: 16px;
             text-align: center;
             line-height: 25px;
-        }
-        .tab .on{
-            dispaly: black;
+            background-color: rgba(80,80,80,0.5);
         }
         .clearfix:after{
             display: block;
             content: "";
             clear: both;
         }
+        .tab li:hover{
+            background-color: #ffa225;
+        }
+        .orderN li:hover{
+            background-color: rgba(80,80,80,1);
+        }
+
 
     </style>
 </head>
 <body>
-    <div class="item clearfix">
+    <div class="item">
         <ul class="tab">
             <li>汽车</li>
             <li>美食</li>
             <li>风景</li>
         </ul>
         <div class="show">
-            <div class="tab_show">
+            <div class="tab_show on">
                 <ul class="Pic">
-                    <li class="car1 on" style = "background: url(images/1.jpg);"></li>
-                    <li class="car2" style = "background-image: url(images/2.jpg)"></li>
-                    <li class="car3" style = "background-image: url(images/3.jpg)"></li>
-                    <li class="car4" style = "background-image: url(images/4.jpg)"></li>
+                    <li class="on" style = "background: url(images/1.jpg);"></li>
+                    <li class="" style = "background-image: url(images/2.jpg)"></li>
+                    <li class="" style = "background-image: url(images/3.jpg)"></li>
+                    <li class="" style = "background-image: url(images/4.jpg)"></li>
                 </ul>
                 <ul class="orderN clearfix on">
-                    <li class="on" style = "background-color:gray ">1</li>
-                    <li  style = "background-color:gray ">2</li>
-                    <li  style = "background-color:gray ">3</li>
-                    <li  style = "background-color:gray ">4</li>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
                 </ul>
             </div>
             <div class="tab_show">
@@ -126,12 +132,12 @@
                     <li class="" style = "background-image: url(images/m4.jpg)"></li>
                     <li class="" style = "background-image: url(images/m5.jpg)"></li>
                 </ul>
-                <ul class="orderN">
-                    <li  style = "background-color:gray ">1</li>
-                    <li  style = "background-color:gray ">2</li>
-                    <li  style = "background-color:gray ">3</li>
-                    <li  style = "background-color:gray ">4</li>
-                    <li  style = "background-color:gray ">5</li>
+                <ul class="orderN clearfix">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
                 </ul>
             </div>
             <div class="tab_show">
@@ -142,19 +148,52 @@
                     <li class="" style = "background-image: url(images/s4.jpg)"></li>
                     <li class="" style = "background-image: url(images/s5.jpg)"></li>
                 </ul>
-                <ul class="orderN">
-                    <li  style = "background-color:gray ">1</li>
-                    <li  style = "background-color:gray ">2</li>
-                    <li  style = "background-color:gray ">3</li>
-                    <li  style = "background-color:gray ">4</li>
-                    <li  style = "background-color:gray ">5</li>
+                <ul class="orderN clearfix">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
                 </ul>
             </div>
         </div>
-
     </div>
 
 <script>
+    var tab = document.querySelectorAll(".tab li"),
+        showDiv = document.querySelectorAll(".show .tab_show"),
+        showOrder = document.getElementsByClassName("orderN"),
+        showPic = document.querySelectorAll(".tab_show .Pic"),
+        pic;
+    
+    // 切换选项卡
+        // 获取选项卡操作对象
+
+                for (var i = 0; i < tab.length; i++) {
+                    pic = showPic[i].getElementsByTagName("li");
+                    tab[i].onclick = function () {
+                        for (var j = 0; j < showDiv.length; j++) {
+                            var str = showDiv[j].className;
+                            showDiv[j].className = str.replace(" on"," ");
+                        }
+                        showDiv[i].className = showDiv[i].className.concat("on");
+                        showOrder[0].className = showOrder[0].className.concat("on");
+                        pic[0].className = pic[0].className.concat("on");
+                    }
+                }
+
+       
+
+    // console.log(tab);
+    // console.log(showDiv);
+    // console.log(showOrder);
+    // console.log(showPic);
+    //
+    // console.log(pic);
+
+
+
+
 </script>
 </body>
 </html>
